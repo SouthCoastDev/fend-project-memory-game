@@ -3,7 +3,8 @@
 ## Table of Contents
 
 * [Summary](#summary)
-* [Details](#details)
+* [Project Details](#details)
+* [Dependencies](#dependencies)
 
 ## Summary
 
@@ -23,21 +24,21 @@ The number of moves needed to change the rating is up to you, but it should happ
 
 
 # Interface Design
-| First Header  | Second Header |
+| CRITERIA  | MEETS SPECIFICATIONS |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| First Header  | Second Header |
-
+| Styling  | Application uses CSS to style components for the game.  |
+| Usability  | All application components are usable across modern desktop, tablet, and phone browsers.  |
 
 # Documentation
-| First Header  | Second Header |
+| CRITERIA  | MEETS SPECIFICATIONS |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| First Header  | Second Header |
-
+| README  | A README file is included detailing the game and all dependencies.  |
+| Comments  | Comments are present and effectively explain longer code procedure when necessary.  |
+| Code Quality  | Code is formatted with consistent, logical, and easy-to-read formatting as described in the [Udacity JavaScript Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html). |
 
 
 ## Details
 
+
+
+## Dependencies

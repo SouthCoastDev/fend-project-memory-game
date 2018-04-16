@@ -1,7 +1,16 @@
-/*
- * Create a list that holds all of your cards
- */
+var cardList = [
+    "fa-diamond"
+    ,"fa-paper-plane-o"
+    ,"fa-anchor"
+    ,"fa-bolt"
+    ,"fa-cube"
+    ,"fa-leaf"
+    ,"fa-bicycle"
+    ,"fa-bomb"
+];
 
+var playerGuess = [];
+var moveCounter = 0;
 
 /*
  * Display the cards on the page
@@ -25,11 +34,50 @@ function shuffle(array) {
     return array;
 }
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
+ * 
  *  - display the card's symbol (put this functionality in another function that you call from this one)
+ */
+
+ function openCard(){
+    document.querySelector('.deck').addEventListener('click', function(event){
+        if(event.target.classList.contains('card')){
+           let card = event.target;
+           card.classList.toggle('open');
+        }
+    });
+
+/*
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ */
+
+function addCardToGuess(card){
+    playerGuess.push(card);
+}
+
+function matchCheck(){
+    cardList[0] === cardList[1] ? true : false;    
+}
+
+function matchTrue(){
+//clear array
+//lock cards open
+//add to list of matched cards
+//check if anything is left to match?
+//show win modal.
+}
+
+function mathFalse(){
+    //clear array
+    //flase flash
+}
+
+function increaseAttmept(){
+    moveCounter ++;
+}
+
+ /*
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
@@ -38,12 +86,6 @@ function shuffle(array) {
  */
 
 
+}
 
- document.querySelector('.deck').addEventListener('click', function(event){
-
-     if(event.target.classList.contains('card')){
-        let card = event.target;
-        card.classList.toggle('open');
-     }
-
- });
+ 

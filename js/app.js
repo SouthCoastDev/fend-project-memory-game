@@ -1,40 +1,4 @@
-
-
-    var playerGuess = [];
-    var moveCounter = 0;
-
-
-//  function flipCard(){
-//     document.querySelector('.deck').addEventListener('click', function(event){
-//         if(event.target.classList.contains('card')){
-//            let card = event.target;
-//            card.classList.toggle('open');
-//         }
-//     });    
-//  }
-
-function addCardToGuess(card){
-    playerGuess.push(card);
-}
-
-
-function matchTrue(){
-//clear array
-//lock cards open
-//add to list of matched cards
-//check if anything is left to match?
-//show win modal.
-}
-
-
-
-function increaseAttmept(){
-    moveCounter ++;
-}
-
-
-
-
+// DONT FORGET TO SET LET AND CONST on the vars
 
  /*
  * Create a list that holds all of your cards
@@ -51,7 +15,7 @@ var cardList = [
 ];
 
 var guessList = [];
-
+var moveCount = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -114,26 +78,24 @@ function shuffle(array) {
         while(guessList.length > 0) {
             guessList.pop();
         }
+/*    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)*/
+        moveCount++;
+        document.querySelector('.moves').innerText = moveCount;
     }
     
+ /*    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ /*    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)*/
+     
+
+ /*    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)*/
+
 
     });  //end event listener
  
 
- /*    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- /*    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)*/
-        
- //empty guessList
-       
- 
- 
-/*    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)*/
 
 
-function matchCheck(){
-    guessList[0] == guessList[1] ? true : false; 
-}
+
 
 
 

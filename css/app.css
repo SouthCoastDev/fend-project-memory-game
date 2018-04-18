@@ -71,6 +71,13 @@ h1 {
     transition: all 1s ease-in-out;
 }
 
+
+.lockedOpen{
+    background-color: rgb(46,255,238); 
+}
+
+
+
 .deck .card .front{
     backface-visibility: hidden;
     position: absolute;

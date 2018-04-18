@@ -54,8 +54,8 @@ for(var i = 0 ; i < allCards.length; i++){
             lockOpen(cardIcon);
             emptyGuess();
            } else{
+            closeCards();
             emptyGuess();
-            closeOpenCards();
            }
 
 
@@ -108,9 +108,19 @@ function emptyGuess(){
     }      
 };
 
- function closeOpenCards(){
+function closeCards(){
+    const cardOne = document.getElementsByClassName(guessList[0]);
+    const cardTwo = document.getElementsByClassName(guessList[1]);
+    console.log(cardOne);
 
- };
+    // for(var i = 0 ; i < openCards.length; i++){
+    //     openCards[i].classList.toggle('open');
+    // }
+
+
+}
+
+
 
 
 

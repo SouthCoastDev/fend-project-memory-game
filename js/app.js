@@ -94,9 +94,10 @@ function lockOpen(icon){
     const cardsToLock = document.getElementsByClassName(icon);    
     for(var i = 0 ; i < cardsToLock.length; i++){
         //remove event listners on element: https://stackoverflow.com/questions/4386300/javascript-dom-how-to-remove-all-events-of-a-dom-object/40448083#40448083
-        cardsToLock[i].parentElement.parentElement.outerHTML = cardsToLock[i].parentElement.parentElement.outerHTML;
+        cardsToLock[i].parentElement.parentElement.outerHTML = cardsToLock[i].parentElement.parentElement.outerHTML;       
+        cardsToLock[i].parentElement.parentElement.classList.add('lockedOpen');
         cardsToLock[i].parentElement.parentElement.classList.remove("open");
-        cardsToLock[i].parentElement.parentElement.classList.add(lockedOpen);
+        
     }
 }
 

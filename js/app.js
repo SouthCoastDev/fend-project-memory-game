@@ -47,18 +47,14 @@ for(var i = 0 ; i < allCards.length; i++){
         flipCard(event);
         addToGuessList(cardIcon);
 
-        if(guessList.length > 1){
-           
+        if(guessList.length > 1){         
            if(checkMatch()){
-               alert("match made");
-            lockOpen(cardIcon);
+            setTimeout(function(){lockOpen(cardIcon)},2000);
             emptyGuess();
            } else{
-            closeCards();
+            setTimeout(closeCards,3000);
             emptyGuess();
            }
-
-
         }
 
     });
@@ -99,25 +95,21 @@ function lockOpen(icon){
     for(var i = 0 ; i < cardsToLock.length; i++){
         //remove event listners on element: https://stackoverflow.com/questions/4386300/javascript-dom-how-to-remove-all-events-of-a-dom-object/40448083#40448083
         cardsToLock[i].parentElement.parentElement.outerHTML = cardsToLock[i].parentElement.parentElement.outerHTML;
+        cardsToLock[i].parentElement.parentElement.classList.remove("open");
+        cardsToLock[i].parentElement.parentElement.classList.add(lockedOpen);
     }
 }
 
 function emptyGuess(){
-    while(guessList.length > 0) {
+    while(guessList.length > 0){
     guessList.pop();
-    }      
+    }
 };
 
 function closeCards(){
-    const cardOne = document.getElementsByClassName(guessList[0]);
-    const cardTwo = document.getElementsByClassName(guessList[1]);
-    console.log(cardOne);
-
-    // for(var i = 0 ; i < openCards.length; i++){
-    //     openCards[i].classList.toggle('open');
-    // }
-
-
+    const openCards = document.getElementsByClassName("open");
+    openCards[0].classList.toggle('open');
+    openCards[0].classList.toggle('open');
 }
 
 

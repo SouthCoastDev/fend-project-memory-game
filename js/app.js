@@ -15,6 +15,7 @@ var cardList = [
 ];
 
 var guessList = [];
+var matchList = [];
 var moveCount = 0;
 /*
  * Display the cards on the page
@@ -64,14 +65,22 @@ function shuffle(array) {
     if(guessList.length > 1){
 
         if(guessList[0] === guessList[1]){
-            console.log("Match");
-        } else{
-            console.log("No match");
             
+            
+            if(matchList.indexOf(guessList[1]) > -1){
+
+                console.log('card already in matchList index:' + matchList.indexOf(guessList[1]));
+
+            } else{
+                matchList.push(guessList[1]);
+                console.log("Match");
+                if(matchList.length == 8){
+                    alert("all cards matched"); 
+                 }
+            }
+        } else{
+            console.log("No match");            
         }   
-        
-      
-        
     }
     
     if(guessList.length == 2) {
@@ -84,6 +93,8 @@ function shuffle(array) {
     }
     
  /*    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+
+
  /*    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)*/
      
 

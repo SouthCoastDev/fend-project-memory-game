@@ -13,6 +13,7 @@ var cardList = [
 ];
 
 var guessList = [];
+var correctGuesses = 0;
 
 /*
  * Display the cards on the page
@@ -50,9 +51,11 @@ for(var i = 0 ; i < allCards.length; i++){
         if(guessList.length > 1){         
            if(checkMatch()){
             setTimeout(function(){lockOpen(cardIcon)},2000);
+            correctGuesses++;
+            checkWin() ? alert("player wins") : null;            
             emptyGuess();
            } else{
-            setTimeout(closeCards,3000);
+            setTimeout(closeCards,2000);
             emptyGuess();
            }
         }
@@ -87,6 +90,12 @@ function checkMatch(){
     return guessList[0] === guessList[1] ? true : false;    
 }
 
+function checkWin(){
+    if(correctGuesses == 8){
+        return true;
+    }
+    return false;
+}
 
 
 

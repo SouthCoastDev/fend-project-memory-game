@@ -37,6 +37,27 @@ h1 {
  * Styles for the deck of cards
  */
 
+
+ .open {
+    transform: rotateY(0);
+   background: #02b3e4;
+   cursor: default; 
+} 
+
+.show {
+   font-size: 33px;
+}
+
+.match {
+   cursor: default;
+   background: #02ccba !IMPORTANT;
+   font-size: 33px;
+}
+
+.disabled{
+    pointer-events: none;
+}
+
 .deck {
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -63,21 +84,6 @@ h1 {
 }
 
 
- .deck .card.open {
-     transform: rotateY(0);
-    background: #02b3e4;
-    cursor: default; 
-} 
-
-.deck .card.show {
-    font-size: 33px;
-}
-
-.deck .card.match {
-    cursor: default;
-    background: #02ccba;
-    font-size: 33px;
-}
 
 
 

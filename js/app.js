@@ -34,8 +34,8 @@ const cards = document.getElementsByClassName('card');
 for (var i = 0; i < cards.length; i++){
     card = cards[i];
     card.addEventListener("click", displayCard);
-    //card.addEventListener("click", cardOpen);
-    //card.addEventListener("click",congratulations);
+    card.addEventListener("click", matchMade);
+    card.addEventListener("click",gameWon);
 };
  
  //addEventListener('click', function(event){
@@ -62,24 +62,38 @@ function startGame(){
 
 function displayCard(){
     this.classList.toggle('open');
-    this.classList.toggle('show');
-    //this.classList.toggle("match");
+    this.classList.toggle('show');  
+    addToOpenCardList(this); 
 };
 
 function freezeCards(){
-
+    for (var i = 0; i < cards.length; i++){
+        card = cards[i];
+        card.classList.add('disabled');
+    };
 }
 
-function addToOpenCardList(){
-
+function unfreezeCards(){
+    for (var i = 0; i < cards.length; i++){
+        card = cards[i];
+        card.classList.remove('disabled');
+    };
 }
 
 
-function matchMade(){
-this.classList.add('disabled');
-this.classList.add('match');
-this.classList.remove('match');
-this.classList.remove('match');
+
+function addToOpenCardList(card){
+    console.log(card.firstElementChild.classList[1]);
+}
+
+
+function matchMade(){   
+    if(false){
+        this.classList.add('disabled');
+        this.classList.add('match');
+        this.classList.remove('open');
+        this.classList.remove('show');
+    }
 }
 
 function noMatch(){

@@ -58,6 +58,7 @@ for (var i = 0; i < cards.length; i++){
  
 function startGame(){
     matchedCards = 0;
+    let moveCounter = 0;
 }
 
 function displayCard(){
@@ -83,16 +84,12 @@ function unfreezeCards(){
     },2500);
 }
 
-
-
 function addToOpenCardList(card){
     openCardList.push(card.firstElementChild.classList[1]);
-    console.log(openCardList);
 }
 
 
-function checkMatch(){  
-    
+function checkMatch(){   
     if(openCardList.length > 1){
         freezeCards();
         if(openCardList[0] == openCardList[1]){
@@ -105,11 +102,9 @@ function checkMatch(){
             noMatch();
         }
         unfreezeCards(); 
-        increaseCounter(); 
+        increaseCounter();
     } 
- 
 }
-
 
 function matchMade(){
     const cards = document.getElementsByClassName(openCardList[1]);
@@ -120,14 +115,13 @@ function matchMade(){
     }
 }
 
-
 function noMatch(){
     const openCards = document.getElementsByClassName('open');
     setTimeout(function(){
         openCards[0].classList.remove('open','show');
         openCards[0].classList.remove('open' ,'show');
     },2000);
- openCardList = [];
+    openCardList = [];
 }
 
 function increaseCounter(){
@@ -135,8 +129,22 @@ function increaseCounter(){
     setTimeout(function(){
         document.querySelector('.moves').innerHTML = moveCounter;
     },500);
-    
+    starRating();
 }
+
+function starRating(){
+    const stars = document.querySelector('.stars').children;
+    const star1 = stars[0];
+    const star2 = stars[1];
+    const star3 = stars[2];
+
+    if(moveCounter > 15){
+        star3.firstElementChild.classList.add('lifeLost');
+    } else if(moveCounter >= 9){
+        star2.firstElementChild.classList.add('lifeLost');
+    }
+}
+
 
 function gameWon(){
  if(matchedCards == 8){

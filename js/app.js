@@ -83,17 +83,26 @@ function unfreezeCards(){
 
 
 function addToOpenCardList(card){
-    console.log(card.firstElementChild.classList[1]);
+    openCardList.push(card.firstElementChild.classList[1]);
+    console.log(openCardList);
 }
 
 
-function matchMade(){   
-    if(false){
-        this.classList.add('disabled');
-        this.classList.add('match');
-        this.classList.remove('open');
-        this.classList.remove('show');
-    }
+function matchMade(){  
+    
+    if(openCardList.length > 1){
+        
+        if(openCardList[0] == openCardList[1]){
+            const cards = document.getElementsByClassName(openCardList[1]);
+            for(let i = 0; i < cards.length; i++){                
+                cards[i].parentElement.classList.add('match');
+                cards[i].parentElement.classList.remove('open');            
+                cards[i].parentElement.classList.remove('show');           
+            }
+        } 
+        openCardList = [];        
+    } 
+ 
 }
 
 function noMatch(){

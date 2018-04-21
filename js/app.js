@@ -34,7 +34,7 @@ const cards = document.getElementsByClassName('card');
 for (var i = 0; i < cards.length; i++){
     card = cards[i];
     card.addEventListener("click", displayCard);
-    card.addEventListener("click", matchMade);
+    card.addEventListener("click", checkMatch);
     card.addEventListener("click",gameWon);
 };
  
@@ -62,22 +62,25 @@ function startGame(){
 
 function displayCard(){
     this.classList.toggle('open');
-    this.classList.toggle('show');  
+    this.classList.toggle('show');
+    this.classList.toggle('disabled');
     addToOpenCardList(this); 
 };
 
 function freezeCards(){
-    for (var i = 0; i < cards.length; i++){
+    for (let i = 0; i < cards.length; i++){
         card = cards[i];
         card.classList.add('disabled');
     };
 }
 
 function unfreezeCards(){
+    setTimeout(function(){
     for (var i = 0; i < cards.length; i++){
         card = cards[i];
         card.classList.remove('disabled');
     };
+    },2500);
 }
 
 
@@ -88,18 +91,12 @@ function addToOpenCardList(card){
 }
 
 
-function matchMade(){  
+function checkMatch(){  
     
     if(openCardList.length > 1){
         freezeCards();
         if(openCardList[0] == openCardList[1]){
-            //match made
-            const cards = document.getElementsByClassName(openCardList[1]);
-            for(let i = 0; i < cards.length; i++){                
-                cards[i].parentElement.classList.add('match');
-                cards[i].parentElement.classList.remove('open');            
-                cards[i].parentElement.classList.remove('show');           
-            }
+            matchMade();
             openCardList = [];
         } else{
             noMatch();
@@ -108,6 +105,17 @@ function matchMade(){
     } 
  
 }
+
+
+function matchMade(){
+    const cards = document.getElementsByClassName(openCardList[1]);
+    for(let i = 0; i < cards.length; i++){                
+        cards[i].parentElement.classList.add('match');
+        cards[i].parentElement.classList.remove('open');            
+        cards[i].parentElement.classList.remove('show');           
+    }
+}
+
 
 function noMatch(){
     const openCards = document.getElementsByClassName('open');

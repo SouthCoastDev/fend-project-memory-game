@@ -91,22 +91,31 @@ function addToOpenCardList(card){
 function matchMade(){  
     
     if(openCardList.length > 1){
-        
+        freezeCards();
         if(openCardList[0] == openCardList[1]){
+            //match made
             const cards = document.getElementsByClassName(openCardList[1]);
             for(let i = 0; i < cards.length; i++){                
                 cards[i].parentElement.classList.add('match');
                 cards[i].parentElement.classList.remove('open');            
                 cards[i].parentElement.classList.remove('show');           
             }
-        } 
-        openCardList = [];        
+            openCardList = [];
+        } else{
+            noMatch();
+        }
+        unfreezeCards();  
     } 
  
 }
 
 function noMatch(){
-
+    const openCards = document.getElementsByClassName('open');
+    setTimeout(function(){
+        openCards[0].classList.remove('open','show');
+        openCards[0].classList.remove('open' ,'show');
+    },2000);
+ openCardList = [];
 }
 
 function increaseCounter(){

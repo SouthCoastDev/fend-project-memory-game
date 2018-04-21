@@ -51,6 +51,7 @@ h1 {
    cursor: default;
    background: #02ccba !IMPORTANT;
    font-size: 33px !IMPORTANT;
+   pointer-events: none;
 }
 
 .disabled{

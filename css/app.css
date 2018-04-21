@@ -54,6 +54,9 @@ h1 {
    pointer-events: none;
 }
 
+.lifeLost{
+    display:none;
+}
 .disabled{
     pointer-events: none;
 }

@@ -1,6 +1,7 @@
 let openCardList = [];
 const deck = document.querySelector(".deck");
-
+let matchedCards = 0;
+let moveCounter = 0;
 
 
 
@@ -35,7 +36,6 @@ for (var i = 0; i < cards.length; i++){
     card = cards[i];
     card.addEventListener("click", displayCard);
     card.addEventListener("click", checkMatch);
-    card.addEventListener("click",gameWon);
 };
  
  //addEventListener('click', function(event){
@@ -57,7 +57,7 @@ for (var i = 0; i < cards.length; i++){
 
  
 function startGame(){
-
+    matchedCards = 0;
 }
 
 function displayCard(){
@@ -98,10 +98,14 @@ function checkMatch(){
         if(openCardList[0] == openCardList[1]){
             matchMade();
             openCardList = [];
+            matchedCards ++;
+            console.log(matchedCards);
+            gameWon();
         } else{
             noMatch();
         }
-        unfreezeCards();  
+        unfreezeCards(); 
+        increaseCounter(); 
     } 
  
 }
@@ -127,9 +131,21 @@ function noMatch(){
 }
 
 function increaseCounter(){
-
+    moveCounter ++;
+    setTimeout(function(){
+        document.querySelector('.moves').innerHTML = moveCounter;
+    },500);
+    
 }
 
 function gameWon(){
+ if(matchedCards == 8){
+    openModal();
+ }
+}
 
+function openModal(){
+    setTimeout(function(){
+    alert("game won");
+    },2000);
 }

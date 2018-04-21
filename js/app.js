@@ -2,8 +2,7 @@ let openCardList = [];
 const deck = document.querySelector(".deck");
 let matchedCards = 0;
 let moveCounter = 0;
-
-
+let clock = {mins:00 ,secs:00};
 
 /*
  * Display the cards on the page
@@ -27,8 +26,6 @@ function shuffle(array) {
     return array;
 }
 
-
-
  //set up the event listener for a card. If a card is clicked:
 const cards = document.getElementsByClassName('card');
 
@@ -37,28 +34,11 @@ for (var i = 0; i < cards.length; i++){
     card.addEventListener("click", displayCard);
     card.addEventListener("click", checkMatch);
 };
- 
- //addEventListener('click', function(event){
-
-
-
- //- display the card's symbol (put this functionality in another function that you call from this one)
- //- add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-//- if the list already has another card, check to see if the two cards match
- //   + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- //   + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-//   + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
-//    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- 
-
-//});
- 
-
-
- 
+  
 function startGame(){
     matchedCards = 0;
     let moveCounter = 0;
+    clock = {mins:00 ,secs:00}; 
 }
 
 function displayCard(){
@@ -130,6 +110,11 @@ function increaseCounter(){
         document.querySelector('.moves').innerHTML = moveCounter;
     },500);
     starRating();
+    
+    if(moveCounter > 0){
+        timer();
+    } 
+
 }
 
 function starRating(){
@@ -145,7 +130,6 @@ function starRating(){
     }
 }
 
-
 function gameWon(){
  if(matchedCards == 8){
     openModal();
@@ -156,4 +140,24 @@ function openModal(){
     setTimeout(function(){
     alert("game won");
     },2000);
+}
+
+function timer(){  
+    const myVar = setInterval(function(){
+        timerCount();
+     }, 1000);
+}
+
+
+function timerCount() {
+    const timerDisplay = document.querySelector('.time');
+    if(timer.secs == 59){
+        clock.mins ++;
+        clock.secs = 0;
+        clock.mins = clock.mins > 9 ? clock.mins : '0' + clock.mins;
+    } else{
+        clock.secs ++;
+        clock.secs = timer.secs > 9 ? clock.secs : '0' + clock.secs;
+    }
+    timerDisplay.innerHTML = clock.mins + ':' + clock.secs;
 }

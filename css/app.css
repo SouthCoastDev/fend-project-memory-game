@@ -128,3 +128,31 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+
+/* style hacked together from: https://www.w3schools.com/howto/howto_css_modals.asp */
+.modal{
+    display: none; /*Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.inner-modal{
+    display:flex;
+    margin-top:150px;
+    background: orange;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.play-again{
+    cursor: pointer;
+}

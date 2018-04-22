@@ -176,8 +176,8 @@ function gameWon(){
             score =3 ;
         }
         
-        finalScore.innerHTML = score ;
-        finalTime.innerHTML = document.querySelector('.time').innerHTML;
+        finalScore.innerHTML = "Your final score is: " + score + " stars" ;
+        finalTime.innerHTML = "Your final time is " + document.querySelector('.time').innerHTML;
 
 
 

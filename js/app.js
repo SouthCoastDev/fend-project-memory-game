@@ -34,6 +34,7 @@ function newGame(){
     //reset all game counters
     matchedCards = 0;
     moveCounter = 0;
+    document.querySelector('.moves').innerHTML = moveCounter;
     clearInterval(timer);
     clock = {mins:0 , secs:0};
     timerDisplay.innerHTML = clock.mins + ':' + clock.secs;
@@ -115,7 +116,7 @@ function increaseCounter(){
     },500);
     starRating();
     
-    if(moveCounter > 0){
+    if(moveCounter == 1 ){
         startTimer();
     } 
 
@@ -132,18 +133,6 @@ function starRating(){
     } else if(moveCounter >= 9){
         star2.firstElementChild.classList.add('lifeLost');
     }
-}
-
-function gameWon(){
- if(matchedCards == 8){
-    openModal();
- }
-}
-
-function openModal(){
-    setTimeout(function(){
-    alert("game won");
-    },2000);
 }
 
 function startTimer(){   
@@ -163,7 +152,44 @@ function startTimer(){
 }
 
 
+function gameWon(){
+    if(matchedCards == 8){
+       openModal();
+    }
+   }
+   
+   function openModal(){
+       setTimeout(function(){
+       
+        const modal = document.querySelector('.modal');
+        let finalScore = document.querySelector('.final-score');
+        let finalTime = document.querySelector('.final-time');
+        const playAgain = document.querySelector('.play-again');
+        const closeModal = document.querySelector('.close-modal');
+        let score = 0;
+
+        if(moveCounter > 15){
+            score = 1;
+        } else if(moveCounter > 9){
+            score = 2;
+        } else {
+            score =3 ;
+        }
+        
+        finalScore.innerHTML = score ;
+        finalTime.innerHTML = document.querySelector('.time').innerHTML;
 
 
+
+
+       },2000);
+   }
+
+
+
+
+//call new game on window load so eveything is reset and cards are shuffled. 
 window.onload = newGame();
+
+//restart button
 document.querySelector('.restart').addEventListener('click', newGame);

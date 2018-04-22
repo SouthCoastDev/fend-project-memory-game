@@ -2,15 +2,18 @@ let openCardList = [];
 const deck = document.querySelector(".deck");
 let matchedCards = 0;
 let moveCounter = 0;
-let clock = {mins:00 ,secs:00};
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
+let timer;
+let clock = {mins:0 , secs:0};
+const timerDisplay = document.querySelector('.time');
+ //set up the event listener for a card. If a card is clicked:
+ const cards = document.getElementsByClassName('card');
+ 
+ for (var i = 0; i < cards.length; i++){
+     card = cards[i];
+     card.addEventListener("click", displayCard);
+     card.addEventListener("click", checkMatch);
+ };
+   
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -26,19 +29,20 @@ function shuffle(array) {
     return array;
 }
 
- //set up the event listener for a card. If a card is clicked:
-const cards = document.getElementsByClassName('card');
 
-for (var i = 0; i < cards.length; i++){
-    card = cards[i];
-    card.addEventListener("click", displayCard);
-    card.addEventListener("click", checkMatch);
-};
-  
-function startGame(){
+function newGame(){
+    //reset all game counters
     matchedCards = 0;
-    let moveCounter = 0;
-    clock = {mins:00 ,secs:00}; 
+    moveCounter = 0;
+    clearInterval(timer);
+    clock = {mins:0 , secs:0};
+    timerDisplay.innerHTML = clock.mins + ':' + clock.secs;
+    //shuffle and assign deck.
+    let shuffledCards = Array.from(cards);
+    shuffledCards = shuffle(shuffledCards);
+    for (var i= 0; i < shuffledCards.length; i++){
+        deck.appendChild(shuffledCards[i]);
+    }
 }
 
 function displayCard(){
@@ -112,7 +116,7 @@ function increaseCounter(){
     starRating();
     
     if(moveCounter > 0){
-        timer();
+        startTimer();
     } 
 
 }
@@ -142,22 +146,24 @@ function openModal(){
     },2000);
 }
 
-function timer(){  
-    const myVar = setInterval(function(){
-        timerCount();
-     }, 1000);
+function startTimer(){   
+     timer = setInterval(function(){
+        
+        if(clock.secs == 59){
+            clock.mins ++;
+            clock.secs = 0;
+            clock.mins = clock.mins > 9 ? clock.mins : '0' + clock.mins;
+        } else{
+            clock.secs ++;
+            clock.secs = clock.secs > 9 ? clock.secs : '0' + clock.secs;
+        }
+        timerDisplay.innerHTML = clock.mins + ':' + clock.secs;
+        }, 1000);
+    
 }
 
 
-function timerCount() {
-    const timerDisplay = document.querySelector('.time');
-    if(timer.secs == 59){
-        clock.mins ++;
-        clock.secs = 0;
-        clock.mins = clock.mins > 9 ? clock.mins : '0' + clock.mins;
-    } else{
-        clock.secs ++;
-        clock.secs = timer.secs > 9 ? clock.secs : '0' + clock.secs;
-    }
-    timerDisplay.innerHTML = clock.mins + ':' + clock.secs;
-}
+
+
+window.onload = newGame();
+document.querySelector('.restart').addEventListener('click', newGame);

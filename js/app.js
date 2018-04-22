@@ -35,6 +35,14 @@ function newGame(){
     matchedCards = 0;
     moveCounter = 0;
     document.querySelector('.moves').innerHTML = moveCounter;
+
+    //remove matched/open/show from all cards:
+    for(let i = 0; i < cards.length; i++){                
+        cards[i].classList.remove('match');
+        cards[i].classList.remove('open');            
+        cards[i].classList.remove('show');           
+    }
+
     clearInterval(timer);
     clock = {mins:0 , secs:0};
     timerDisplay.innerHTML = clock.mins + ':' + clock.secs;
@@ -153,19 +161,21 @@ function startTimer(){
 
 
 function gameWon(){
-    if(matchedCards == 8){
+    if(matchedCards == 1){
        openModal();
     }
    }
    
    function openModal(){
+
+    // some logic from: https://www.w3schools.com/howto/howto_css_modals.asp
+
        setTimeout(function(){
        
         const modal = document.querySelector('.modal');
         let finalScore = document.querySelector('.final-score');
         let finalTime = document.querySelector('.final-time');
         const playAgain = document.querySelector('.play-again');
-        const closeModal = document.querySelector('.close-modal');
         let score = 0;
 
         if(moveCounter > 15){
@@ -176,13 +186,20 @@ function gameWon(){
             score =3 ;
         }
         
+
+        modal.style.display = "block";
         finalScore.innerHTML = "Your final score is: " + score + " stars" ;
         finalTime.innerHTML = "Your final time is " + document.querySelector('.time').innerHTML;
+        playAgain.addEventListener('click' , newGame);
 
+        playAgain.addEventListener('click' , function(){
+            modal.style.display = "none";
+        });
 
-
-
-       },2000);
+        clearInterval(timer);
+        clock = {mins:0 , secs:0};
+        timerDisplay.innerHTML = clock.mins + ':' + clock.secs;
+       },1000);
    }
 
 

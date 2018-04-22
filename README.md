@@ -42,3 +42,7 @@ The number of moves needed to change the rating is up to you, but it should happ
 
 
 ## Dependencies
+
+[Font awsesome](https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css)
+
+[Google fonts](https://fonts.googleapis.com/css?family=Coda)

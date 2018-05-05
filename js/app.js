@@ -9,6 +9,9 @@ let clock = {mins:0 , secs:0};
 const timerDisplay = document.querySelector('.time');
 const cards = document.getElementsByClassName('card');
 
+const restartButton = document.querySelector('.restart');
+restartButton.addEventListener('click' , newGame);
+
 //add event listners to all cards
  for (var i = 0; i < cards.length; i++){
      card = cards[i];
